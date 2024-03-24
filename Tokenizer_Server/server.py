@@ -19,10 +19,9 @@ def preprocess_text():
     texts = []
     for key, value in data.items():
         texts.append(f"{key}: {value}")
-    print(texts)
-    print("-----------------------")
     model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
     embeddings = model.encode(texts)
+    print("Processed an request successfully")
     return jsonify({"embeddings": embeddings.tolist()})
 
 def convert_json_to_text(data):
