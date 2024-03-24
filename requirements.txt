@@ -5,3 +5,4 @@ sentence-transformers
 pymongo
 requests
 json
+flask-cors
