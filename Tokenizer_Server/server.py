@@ -1,10 +1,13 @@
 import flask
-from flask import request
+from flask import request, jsonify
 from sentence_transformers import SentenceTransformer
 import json
 
 app = flask.Flask(__name__)
 
+# Enable CORS
+from flask_cors import CORS
+CORS(app)
 
 @app.route("/preprocess", methods=["POST"])
 def preprocess_text():
@@ -15,7 +18,7 @@ def preprocess_text():
     model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
     embeddings = model.encode(texts)
     print(embeddings)
-    return "processed successfully"
+    return jsonify({"message": "processed successfully"})
 
 def convert_json_to_text(data):
     texts = []
