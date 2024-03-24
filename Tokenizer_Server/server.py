@@ -23,8 +23,7 @@ def preprocess_text():
     print("-----------------------")
     model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
     embeddings = model.encode(texts)
-    print(embeddings)
-    return jsonify({"message": "processed successfully"})
+    return jsonify({"embeddings": embeddings.tolist()})
 
 def convert_json_to_text(data):
     texts = []
