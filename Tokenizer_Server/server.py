@@ -9,6 +9,10 @@ app = flask.Flask(__name__)
 from flask_cors import CORS
 CORS(app)
 
+@app.route("/checking", methods=["GET"])
+def checking():
+    return "Working!!"
+
 @app.route("/preprocess", methods=["POST"])
 def preprocess_text():
     data = request.get_json()
