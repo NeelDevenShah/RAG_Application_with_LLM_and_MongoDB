@@ -5,6 +5,7 @@ import json
 
 app = flask.Flask(__name__)
 
+
 @app.route("/preprocess", methods=["POST"])
 def preprocess_text():
     data = request.get_json()
