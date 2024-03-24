@@ -16,7 +16,9 @@ def checking():
 @app.route("/preprocess", methods=["POST"])
 def preprocess_text():
     data = request.get_json()
-    texts = [data.get()]
+    texts = []
+    for key, value in data.items():
+        texts.append(f"{key}: {value}")
     print(texts)
     print("-----------------------")
     model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
