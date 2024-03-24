@@ -1,0 +1,7 @@
+Flask
+pandas
+os
+sentence-transformers
+pymongo
+requests
+json
