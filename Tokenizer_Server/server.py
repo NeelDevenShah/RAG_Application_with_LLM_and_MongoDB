@@ -2,6 +2,8 @@ import flask
 from flask import request, jsonify
 from sentence_transformers import SentenceTransformer
 import json
+
+
 app = flask.Flask(__name__)
 # Enable CORS
 from flask_cors import CORS
@@ -20,8 +22,9 @@ def preprocess_text():
         print("-----------------------")
         model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         embeddings = model.encode(texts)
+        embeddings = embeddings.tolist()  # Convert ndarray to list
         print("Processed a request successfully")
-        return jsonify({"embedding" :embeddings})
+        return json.dumps(embeddings)
     except Exception as e:
         return jsonify({"error": str(e)})
 
