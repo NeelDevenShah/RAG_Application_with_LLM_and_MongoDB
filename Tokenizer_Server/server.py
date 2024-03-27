@@ -14,9 +14,9 @@ def checking():
 def preprocess_text():
     try:
         data = request.get_json()
-        texts = []
+        texts = ""
         for key, value in data.items():
-            texts.append(f"{key}: {value}")
+            texts.join(f" {key}: {value}")
         print("-----------------------")
         model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         embeddings = model.encode(texts)
@@ -24,13 +24,6 @@ def preprocess_text():
         return jsonify(embeddings.tolist())
     except Exception as e:
         return jsonify({"error": str(e)})
-
-def convert_json_to_text(data):
-    texts = []
-    for item in data:
-        text = item.get("text")
-        texts.append(text)
-    return texts
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)  # Change port if needed
