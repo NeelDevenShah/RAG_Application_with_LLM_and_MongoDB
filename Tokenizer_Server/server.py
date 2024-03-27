@@ -21,7 +21,7 @@ def preprocess_text():
         model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         embeddings = model.encode(texts)
         print("Processed a request successfully")
-        return jsonify({"embeddings": embeddings.tolist()})
+        return jsonify(embeddings.tolist())
     except Exception as e:
         return jsonify({"error": str(e)})
 
