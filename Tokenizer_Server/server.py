@@ -24,7 +24,7 @@ def preprocess_text():
         embeddings = model.encode(texts)
         embeddings = embeddings.tolist()  # Convert ndarray to list
         print("Processed a request successfully")
-        return json.dumps(embeddings)
+        return json.dumps({"embeddings": embeddings})
     except Exception as e:
         return jsonify({"error": str(e)})
 
